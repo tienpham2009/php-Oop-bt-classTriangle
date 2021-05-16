@@ -9,6 +9,7 @@ class Triangle extends Shape
     private int|float $side1;
     private int|float $side2;
     private int|float $side3;
+    private string $color;
     private int|float $p;
 
     public function __construct($name, $array)
@@ -17,6 +18,7 @@ class Triangle extends Shape
         $this->side1 = $array["side1"];
         $this->side2 = $array["side2"];
         $this->side3 = $array["side3"];
+        $this->color = $array["color"];
 
         // $p la nua chu vi cua tam giac
         $this->p = ($this->side1 + $this->side2 + $this->side3) / 2;
@@ -100,6 +102,22 @@ class Triangle extends Shape
         $this->side3 = $side3;
     }
 
+    /**
+     * @return mixed|string
+     */
+    public function getColor(): mixed
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param mixed|string $color
+     */
+    public function setColor(mixed $color): void
+    {
+        $this->color = $color;
+    }
+
     #[Pure] public function getArea(): int|float
     {
         if ($this->checkTriangle()){
@@ -112,13 +130,22 @@ class Triangle extends Shape
         }
     }
 
+    public function perimeter():int|float
+    {
+        return $this->p * 2;
+    }
+
     #[Pure] public function __toString(): string
     {
         return "canh 1: ". $this->side1.
             "<br>"."canh 2: ". $this->side2.
             "<br>"."canh 3: ".$this->side3.
+            "<br>". $this->color.
+            "<br>"."perimeter: ".
             "<br>"."Area :". $this->getArea();
     }
+
+
 
 
 }
